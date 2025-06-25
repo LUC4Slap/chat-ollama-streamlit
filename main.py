@@ -30,7 +30,8 @@ st.title("🛸 Yoda AI ChatBot")
 contexto = recuperar_ultimo_contexto("padawan")
 # Inicializa o estado da aplicação
 if "messages" not in st.session_state:
-    st.session_state.messages = recuperar_mensagens_do_contexto(contexto)
+    mensagens = recuperar_mensagens_do_contexto(contexto)
+    st.session_state.messages = mensagens or []
 if "context" not in st.session_state:
     st.session_state.context = contexto or ""
 
@@ -40,6 +41,8 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 # Campo de entrada do usuário
+left, right = st.columns(2)
+
 if prompt := st.chat_input("Digite sua pergunta..."):
     # Adiciona pergunta ao histórico
     st.session_state.messages.append({"role": "user", "content": prompt})
