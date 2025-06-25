@@ -23,17 +23,6 @@ def recuperar_ultimo_contexto(usuario):
         return registro["contexto"]
     return ""
 
-# def recuperar_mensagens_do_contexto(contexto):
-#     mensagens = []
-#     linhas = contexto.strip().split("\n")
-#     for linha in linhas:
-#         if linha.startswith("User:"):
-#             mensagens.append({"role": "user", "content": linha.replace("User:", "").strip()})
-#         elif linha.startswith("AI:"):
-#             mensagens.append({"role": "assistant", "content": linha.replace("AI:", "").strip()})
-#     print(mensagens)
-#     return mensagens
-
 def recuperar_mensagens_do_contexto(contexto):
     mensagens = []
     linhas = contexto.strip().split("\n")
